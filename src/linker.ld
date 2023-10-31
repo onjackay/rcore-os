@@ -12,7 +12,7 @@ SECTIONS
         *(.text.entry)
         *(.text .text.*)
     }
-    
+
     . = ALIGN(4K);
     etext = .;
     srodata = .;
