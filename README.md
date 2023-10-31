@@ -18,6 +18,8 @@ qemu-system-riscv64 \
     -s -S
 ```
 
+Remove `-s S` to run without waiting for gdb.
+
 ### GDB
 
 ```
