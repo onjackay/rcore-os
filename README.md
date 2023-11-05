@@ -4,7 +4,7 @@ https://github.com/rcore-os/rCore-Tutorial-v3
 
 ```
 cargo build --release
-rust-objcopy --strip-all target/riscv64gc-unknown-none-elf/release/os1 -O binary target/riscv64gc-unknown-none-elf/release/os.bin
+rust-objcopy --strip-all target/riscv64gc-unknown-none-elf/release/os -O binary target/riscv64gc-unknown-none-elf/release/os.bin
 ```
 
 ### Run and wait for GBD
