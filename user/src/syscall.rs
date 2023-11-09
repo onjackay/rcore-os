@@ -18,3 +18,7 @@ fn syscall(eid: usize, fid: usize, arg0: usize, arg1: usize, arg2: usize) -> usi
     }
     ret
 }
+
+// pub fn sys_write(fd: usize, buffer: &[u8]) -> isize {
+    
+// }
