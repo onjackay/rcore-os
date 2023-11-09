@@ -4,8 +4,14 @@ https://github.com/rcore-os/rCore-Tutorial-v3
 
 ```
 cd os
+```
+```
 cargo build --release
-rust-objcopy --strip-all target/riscv64gc-unknown-none-elf/release/os -O binary target/riscv64gc-unknown-none-elf/release/os.bin
+```
+
+Optional:
+```
+rust-objcopy --strip-all target/riscv64gc-unknown-none-elf/release/os -O binary target/riscv64gc-unknown-none-elf/release/os
 ```
 
 ### Run and wait for GBD
@@ -15,11 +21,11 @@ qemu-system-riscv64 \
     -machine virt \
     -nographic \
     -bios ../bootloader/rustsbi-qemu.bin \
-    -device loader,file=target/riscv64gc-unknown-none-elf/release/os.bin,addr=0x80200000 \
+    -device loader,file=target/riscv64gc-unknown-none-elf/release/os,addr=0x80200000 \
     -s -S
 ```
 
-Remove `-s S` to run without waiting for gdb.
+Remove `-s S` to run without gdb.
 
 ### GDB
 

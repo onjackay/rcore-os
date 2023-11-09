@@ -17,28 +17,11 @@ const SRST_EXTENSION: usize = 0x53525354;
 const SBI_SHUTDOWN: usize = 0;
 
 // base extension
-const EXTENSION_BASE: usize = 0x10;
-const FUNCTION_BASE_GET_SPEC_VERSION: usize = 0x00;
-
-// TODO: remove it
-#[inline(always)]
-fn sbi_call(eid: usize, fid: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
-    let mut ret;
-    unsafe {
-        asm!(
-            "ecall",
-            inlateout("x10") arg0 => ret,
-            in("x11") arg1,
-            in("x12") arg2,
-            in("x16") fid,
-            in("x17") eid,
-        );
-    }
-    ret
-}
+const BASE_EXTENSION: usize = 0x10;
+const SBI_GET_SPEC_VERSION: usize = 0x00;
 
 #[inline(always)]
-fn sbi_call_(extension: usize, function: usize, arg0: usize, arg1: usize) -> usize {
+fn sbi_call(extension: usize, function: usize, arg0: usize, arg1: usize) -> usize {
     let value: usize;
     match () {
         #[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
@@ -59,14 +42,14 @@ fn sbi_call_(extension: usize, function: usize, arg0: usize, arg1: usize) -> usi
 
 #[inline]
 pub fn get_spec_version() -> usize {
-    sbi_call_(EXTENSION_BASE, FUNCTION_BASE_GET_SPEC_VERSION, 0, 0)
+    sbi_call(BASE_EXTENSION, SBI_GET_SPEC_VERSION, 0, 0)
 }
 
 pub fn console_putchar(c: usize) {
-    sbi_call(SBI_CONSOLE_PUTCHAR, 0, c, 0, 0);
+    sbi_call(SBI_CONSOLE_PUTCHAR, 0, c, 0);
 }
 
 pub fn shutdown() -> ! {
-    sbi_call(SRST_EXTENSION, SBI_SHUTDOWN, 0, 0, 0);
+    sbi_call(SRST_EXTENSION, SBI_SHUTDOWN, 0, 0);
     panic!("It should shutdown!")
 }
