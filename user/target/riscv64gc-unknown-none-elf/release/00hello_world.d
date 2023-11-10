@@ -1,0 +1,1 @@
+/root/rcore-os/rcore-os/user/target/riscv64gc-unknown-none-elf/release/00hello_world: /root/rcore-os/rcore-os/user/src/bin/00hello_world.rs /root/rcore-os/rcore-os/user/src/console.rs /root/rcore-os/rcore-os/user/src/lang_items.rs /root/rcore-os/rcore-os/user/src/lib.rs /root/rcore-os/rcore-os/user/src/syscall.rs
