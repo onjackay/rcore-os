@@ -29,7 +29,6 @@ pub fn rust_main() -> ! {
     clear_bss();
     println!("Hello, world!");
     println!("Get_spec_version: {}", get_spec_version());
-    println!("Hell world!");
     println!(".text [{:#x}, {:#x})", stext as usize, etext as usize);
     println!(".rodata [{:#x}, {:#x})", srodata as usize, erodata as usize);
     println!(".data [{:#x}, {:#x})", sdata as usize, edata as usize);

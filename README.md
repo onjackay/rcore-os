@@ -35,3 +35,14 @@ riscv64-unknown-elf-gdb \
     -ex 'set arch riscv:rv64' \
     -ex 'target remote localhost:1234'
 ```
+
+### User applications
+
+To run user application on qemu-riscv64 simulator:
+
+```
+cd user
+make build
+cd target/riscv64gc-unknown-none-elf/release
+qemu-riscv64 ./00hello_world
+```
